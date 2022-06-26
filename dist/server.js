@@ -19,5 +19,5 @@ mongoose_1.default.connect('mongodb+srv://Lior:Iz9Wr7PZQF91rlCe@cluster0.xfjftjk
 const userRoutes_1 = __importDefault(require("./routes/userRoutes"));
 app.use('/users', userRoutes_1.default);
 app.listen(port, () => {
-    console.log(`server is running`);
+    console.log(`Server is running http://localhost:${port}`);
 });

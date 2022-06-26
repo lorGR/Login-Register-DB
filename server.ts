@@ -20,5 +20,5 @@ import userRoutes from './routes/userRoutes';
 app.use('/users', userRoutes);
 
 app.listen(port, () => {
-    console.log(`server is running`);
+    console.log(`Server is running http://localhost:${port}`);
 })

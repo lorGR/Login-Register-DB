@@ -1,6 +1,5 @@
-const style = 'background-color: cyan; font-size: 50px;';
+const style = 'background-color: cyan; font-size: 20px;';
 console.log('%cconnected', style);
-console.log('%c This is scripted console log', style);
 
 async function handleRegister(event) {
     try {

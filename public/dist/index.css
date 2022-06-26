@@ -1,0 +1,8 @@
+body {
+  width: 100vw;
+  height: 100vh;
+}
+body .form-container {
+  display: grid;
+  place-items: center;
+}
