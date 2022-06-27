@@ -53,6 +53,10 @@ body .forms-container form input, body .forms-container form input:focus {
   border-bottom: 2px solid var(--dark-brown);
   border-radius: 0.5em;
   padding-left: 1.2em;
+  background-image: url("./icon0-vector-461-01.jpg");
+  background-size: 30px 30px;
+  background-position: 10px 10px;
+  background-repeat: no-repeat;
 }
 body .forms-container form button {
   color: var(--dark-brown);
