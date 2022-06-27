@@ -1,8 +1,62 @@
+:root{
+    --dark-brown: hsl(23, 17%, 36%);
+    --light-brown: hsl(26, 28%, 53%);
+    --dark-green: hwb(76 47% 25%);
+    --light-green: hsl(70, 47%, 81%);
+    --very-light-green: hsl(48, 50%, 88%);
+}
+*{
+    font-family: 'Poppins', sans-serif;
+    box-sizing: border-box;
+}
 body {
     width: 100vw;
     height: 100vh;
-    .form-container {
-        display: grid;
-        place-items: center;
+    margin: 0;
+    display: grid;
+    place-items: center;
+    background-color: var(--very-light-green);
+    .forms-container {
+        display: flex;
+        gap: 4em;
+        form{
+            color: var(--dark-brown);
+            background-color: var(--light-green);
+            padding: 2em;
+            border: 2px solid var(--dark-brown);
+            border-radius: 1em;
+            display: flex;
+            flex-direction: column;
+            gap: 1em;
+            text-align: center;
+            .email {
+                display: flex;
+                gap: .5em;
+            }
+            .password {
+                display: flex;
+                gap: .5em;
+            }
+            label{
+                font-size: 1.5rem;
+            }
+            input,input:focus{
+                outline: none;
+                width: 100%;
+                border: none;
+                border-bottom: 2px solid var(--dark-brown);
+                border-radius: .5em;
+                background-color: var(--very-light-green);
+            }
+            input[type=email]{
+                background-color: white;
+                background-image: url('../assets/images/icons/icons8-mail-100.png');
+                background-position: 10px 10px;
+                padding-left: 40px;
+            }
+            button{
+                padding: .5em;
+            }
+        }
     }
 }

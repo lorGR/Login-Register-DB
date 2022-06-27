@@ -1,30 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.0.0-alpha.1/axios.min.js" integrity="sha512-xIPqqrfvUAc/Cspuj7Bq0UtHNo/5qkdyngx6Vwt+tmbvTLDszzXM0G6c91LXmGrRx8KEPulT+AfOOez+TeVylg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400;700;900&display=swap"
+        rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.0.0-alpha.1/axios.min.js"
+        integrity="sha512-xIPqqrfvUAc/Cspuj7Bq0UtHNo/5qkdyngx6Vwt+tmbvTLDszzXM0G6c91LXmGrRx8KEPulT+AfOOez+TeVylg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <title>Login - Register</title>
     <link rel="stylesheet" href="./dist/index.css">
 </head>
+
 <body>
-    <div class="form-container">
+    <div class="forms-container">
         <form onsubmit="handleRegister(event)">
-            <label for="email">Enter Email:</label>
-            <input type="email" name="email" placeholder="Enter Email:">
-            <label for="password">Enter Password:</label>
-            <input type="password" name="password" placeholder="Enter Password:">
-            <input type="submit" value="Register">
+            <h2>Register</h2>
+            <div class="email">
+                <label for="email">Email:</label>
+                <input type="email" name="email" placeholder="">
+            </div>
+            <div class="password">
+                <label for="password">Password:</label>
+                <input type="password" name="password" placeholder="Enter Password:">
+            </div>
+            <button type="submit">Register</button>
         </form>
         <form onsubmit="handleRegister(event)">
-            <label for="email">Enter Email:</label>
-            <input type="email" name="email" placeholder="Enter Email:">
-            <label for="password">Enter Password</label>
-            <input type="password" name="password" placeholder="Enter Password:">
-            <input type="submit" value="Login">
+            <h2>Login</h2>
+            <div class="email">
+                <label for="email">Email:</label>
+                <input type="email" name="email" placeholder="Enter Email:">
+            </div>
+            <div class="password">
+                <label for="password">Password:</label>
+                <input type="password" name="password" placeholder="Enter Password:">
+            </div>
+            <button type="submit">Login</button>
         </form>
     </div>
     <script src="./dist/index.js"></script>
 </body>
+
 </html>
