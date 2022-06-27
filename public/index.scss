@@ -38,7 +38,8 @@ body {
                 gap: .5em;
             }
             label{
-                font-size: 1.5rem;
+                font-size: 1.2rem;
+                user-select: none;
             }
             input,input:focus{
                 outline: none;
@@ -46,16 +47,21 @@ body {
                 border: none;
                 border-bottom: 2px solid var(--dark-brown);
                 border-radius: .5em;
-                background-color: var(--very-light-green);
-            }
-            input[type=email]{
-                background-color: white;
-                background-image: url('../assets/images/icons/icons8-mail-100.png');
-                background-position: 10px 10px;
-                padding-left: 40px;
+                padding-left: 1.2em;
             }
             button{
-                padding: .5em;
+                color: var(--dark-brown);
+                border: none;
+                border-bottom: 2px solid var(--dark-brown);
+                border-radius: .5em;
+                padding: .3em;
+                font-size: 1.2rem;
+                background-color: var(--dark-green);
+                transition: background-color .25s ease-in-out;
+            }
+            button:hover{
+                cursor: pointer;
+                background-color: var(--very-light-green);
             }
         }
     }

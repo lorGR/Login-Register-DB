@@ -43,7 +43,8 @@ body .forms-container form .password {
   gap: 0.5em;
 }
 body .forms-container form label {
-  font-size: 1.5rem;
+  font-size: 1.2rem;
+  user-select: none;
 }
 body .forms-container form input, body .forms-container form input:focus {
   outline: none;
@@ -51,14 +52,19 @@ body .forms-container form input, body .forms-container form input:focus {
   border: none;
   border-bottom: 2px solid var(--dark-brown);
   border-radius: 0.5em;
-  background-color: var(--very-light-green);
-}
-body .forms-container form input[type=email] {
-  background-color: white;
-  background-image: url("../assets/images/icons/icons8-mail-100.png");
-  background-position: 10px 10px;
-  padding-left: 40px;
+  padding-left: 1.2em;
 }
 body .forms-container form button {
-  padding: 0.5em;
+  color: var(--dark-brown);
+  border: none;
+  border-bottom: 2px solid var(--dark-brown);
+  border-radius: 0.5em;
+  padding: 0.3em;
+  font-size: 1.2rem;
+  background-color: var(--dark-green);
+  transition: background-color 0.25s ease-in-out;
+}
+body .forms-container form button:hover {
+  cursor: pointer;
+  background-color: var(--very-light-green);
 }
