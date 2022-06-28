@@ -17,8 +17,8 @@ const UserModel = mongoose.model('users', UserSchema);
 
 export default UserModel;
 
-export const userValidation = joi.object({
+export const UserValidation = joi.object({
     email: joi.string().email().required(),
-    password: joi.string().required()
+    password: joi.string().required().min(6)
 }) 
 

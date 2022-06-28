@@ -36,11 +36,12 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 exports.__esModule = true;
-exports.register = void 0;
+exports.login = exports.register = void 0;
 var userModel_1 = require("../model/userModel");
+var userModel_2 = require("../model/userModel");
 function register(req, res) {
     return __awaiter(this, void 0, void 0, function () {
-        var _a, email, password, user, error_1;
+        var _a, email, password, error, user, error_1;
         return __generator(this, function (_b) {
             switch (_b.label) {
                 case 0:
@@ -50,11 +51,14 @@ function register(req, res) {
                         throw new Error("Couldn't get email from body");
                     if (!password)
                         throw new Error("Couldn't get password from body");
+                    error = userModel_2.UserValidation.validate({ email: email, password: password }).error;
+                    if (error)
+                        throw error;
                     user = new userModel_1["default"]({ email: email, password: password });
                     return [4 /*yield*/, user.save()];
                 case 1:
                     _b.sent();
-                    res.send({ user: user });
+                    res.send({ register: true });
                     return [3 /*break*/, 3];
                 case 2:
                     error_1 = _b.sent();
@@ -66,3 +70,38 @@ function register(req, res) {
     });
 }
 exports.register = register;
+function login(req, res) {
+    return __awaiter(this, void 0, void 0, function () {
+        var _a, email, password, error, user, error_2;
+        return __generator(this, function (_b) {
+            switch (_b.label) {
+                case 0:
+                    _b.trys.push([0, 2, , 3]);
+                    _a = req.body, email = _a.email, password = _a.password;
+                    if (!email)
+                        throw new Error("Couldn't get email from body");
+                    if (!password)
+                        throw new Error("Couldn't get password from body");
+                    error = userModel_2.UserValidation.validate({ email: email, password: password }).error;
+                    if (error)
+                        throw error;
+                    return [4 /*yield*/, userModel_1["default"].findOne({ email: email, password: password })];
+                case 1:
+                    user = _b.sent();
+                    if (!user) {
+                        res.send({ login: false });
+                    }
+                    else {
+                        res.send({ login: true });
+                    }
+                    return [3 /*break*/, 3];
+                case 2:
+                    error_2 = _b.sent();
+                    res.send({ error: error_2.message });
+                    return [3 /*break*/, 3];
+                case 3: return [2 /*return*/];
+            }
+        });
+    });
+}
+exports.login = login;

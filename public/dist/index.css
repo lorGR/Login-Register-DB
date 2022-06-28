@@ -17,11 +17,13 @@ body {
   margin: 0;
   display: grid;
   place-items: center;
-  background-color: var(--very-light-green);
 }
 body .forms-container {
   display: flex;
   gap: 4em;
+  padding: 4em;
+  border-radius: 1em;
+  user-select: none;
 }
 body .forms-container form {
   color: var(--dark-brown);
@@ -52,10 +54,9 @@ body .forms-container form input, body .forms-container form input:focus {
   border: none;
   border-bottom: 2px solid var(--dark-brown);
   border-radius: 0.5em;
-  padding-left: 1.2em;
-  background-image: url("./icon0-vector-461-01.jpg");
-  background-size: 30px 30px;
-  background-position: 10px 10px;
+  padding-left: 2em;
+  background-size: 1.5em 1.5em;
+  background-position: 5px 5px;
   background-repeat: no-repeat;
 }
 body .forms-container form button {

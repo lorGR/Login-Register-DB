@@ -38,7 +38,7 @@ var style = 'background-color: cyan; font-size: 20px;';
 console.log('%cconnected', style);
 function handleRegister(event) {
     return __awaiter(this, void 0, void 0, function () {
-        var email, password, data, user, error, error_1;
+        var email, password, data, register, error, error_1;
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
@@ -55,14 +55,50 @@ function handleRegister(event) {
                     data = (_a.sent()).data;
                     if (!data)
                         throw new Error("Couldn't receive data from axios POST URL: /users/register ");
-                    user = data.user, error = data.error;
-                    if (error)
-                        throw error;
-                    console.log(user);
+                    register = data.register, error = data.error;
+                    console.log(error);
+                    if (error && error.includes("E11000"))
+                        alert("Email is alredy in use");
+                    if (error && error.includes('"password"'))
+                        alert("Password must be at least 6 characters long");
+                    console.log(data);
                     return [3 /*break*/, 3];
                 case 2:
                     error_1 = _a.sent();
                     console.error(error_1);
+                    return [3 /*break*/, 3];
+                case 3: return [2 /*return*/];
+            }
+        });
+    });
+}
+function handleLogin(event) {
+    return __awaiter(this, void 0, void 0, function () {
+        var email, password, data, login, error, error_2;
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0:
+                    _a.trys.push([0, 2, , 3]);
+                    event.preventDefault();
+                    email = event.target.email.value;
+                    password = event.target.password.value;
+                    if (!email)
+                        throw new Error("Email is required");
+                    if (!password)
+                        throw new Error("Password is required");
+                    return [4 /*yield*/, axios.post('/users/login', { email: email, password: password })];
+                case 1:
+                    data = (_a.sent()).data;
+                    if (!data)
+                        throw new Error("Couldn't receive data from axios POST URL: /users/login ");
+                    login = data.login, error = data.error;
+                    if (error)
+                        throw error;
+                    console.log(data);
+                    return [3 /*break*/, 3];
+                case 2:
+                    error_2 = _a.sent();
+                    console.log(error_2);
                     return [3 /*break*/, 3];
                 case 3: return [2 /*return*/];
             }
