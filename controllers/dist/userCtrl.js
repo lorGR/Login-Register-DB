@@ -36,7 +36,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 exports.__esModule = true;
-exports.login = exports.register = void 0;
+exports.getUser = exports.login = exports.register = void 0;
 var userModel_1 = require("../model/userModel");
 var userModel_2 = require("../model/userModel");
 function register(req, res) {
@@ -72,7 +72,7 @@ function register(req, res) {
 exports.register = register;
 function login(req, res) {
     return __awaiter(this, void 0, void 0, function () {
-        var _a, email, password, error, user, error_2;
+        var _a, email, password, user, error_2;
         return __generator(this, function (_b) {
             switch (_b.label) {
                 case 0:
@@ -82,9 +82,6 @@ function login(req, res) {
                         throw new Error("Couldn't get email from body");
                     if (!password)
                         throw new Error("Couldn't get password from body");
-                    error = userModel_2.UserValidation.validate({ email: email, password: password }).error;
-                    if (error)
-                        throw error;
                     return [4 /*yield*/, userModel_1["default"].findOne({ email: email, password: password })];
                 case 1:
                     user = _b.sent();
@@ -92,7 +89,7 @@ function login(req, res) {
                         res.send({ login: false });
                     }
                     else {
-                        res.send({ login: true });
+                        res.send({ login: true, user: user });
                     }
                     return [3 /*break*/, 3];
                 case 2:
@@ -105,3 +102,30 @@ function login(req, res) {
     });
 }
 exports.login = login;
+function getUser(req, res) {
+    return __awaiter(this, void 0, void 0, function () {
+        var userId, user, error_3;
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0:
+                    _a.trys.push([0, 2, , 3]);
+                    userId = req.body.userId;
+                    if (!userId)
+                        throw new Error("Couldn't get userId from body");
+                    return [4 /*yield*/, userModel_1["default"].findById(userId)];
+                case 1:
+                    user = _a.sent();
+                    if (!user)
+                        throw new Error("Couldn't find user with the id: " + userId);
+                    res.send({ user: user });
+                    return [3 /*break*/, 3];
+                case 2:
+                    error_3 = _a.sent();
+                    res.send({ error: error_3.message });
+                    return [3 /*break*/, 3];
+                case 3: return [2 /*return*/];
+            }
+        });
+    });
+}
+exports.getUser = getUser;

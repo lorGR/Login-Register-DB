@@ -34,75 +34,29 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
         if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
     }
 };
-var style = 'background-color: cyan; font-size: 20px;';
-console.log('%cconnected', style);
-function handleRegister(event) {
+function getUserIdByParams() {
+    var urlParams = new URLSearchParams(window.location.search);
+    var userId = urlParams.get('userId');
+    return userId;
+}
+function handleGetUser() {
     return __awaiter(this, void 0, void 0, function () {
-        var email, password, data, register, error, error_1;
+        var userId, data, error_1;
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
                     _a.trys.push([0, 2, , 3]);
-                    event.preventDefault();
-                    email = event.target.email.value;
-                    password = event.target.password.value;
-                    if (!email)
-                        throw new Error("Email is required");
-                    if (!password)
-                        throw new Error("Password is required");
-                    return [4 /*yield*/, axios.post('/users/register', { email: email, password: password })];
+                    userId = getUserIdByParams();
+                    return [4 /*yield*/, axios.post("/users/get-user", { userId: userId })];
                 case 1:
                     data = (_a.sent()).data;
                     if (!data)
-                        throw new Error("Couldn't receive data from axios POST URL: /users/register ");
-                    register = data.register, error = data.error;
-                    console.log(error);
-                    if (error && error.includes("E11000"))
-                        alert("Email is alredy in use");
-                    if (error && error.includes('"password"'))
-                        alert("Password must be at least 6 characters long");
+                        throw new Error("Couldn't recieve data from axios GET URL: /user/get-user ");
                     console.log(data);
                     return [3 /*break*/, 3];
                 case 2:
                     error_1 = _a.sent();
                     console.error(error_1);
-                    return [3 /*break*/, 3];
-                case 3: return [2 /*return*/];
-            }
-        });
-    });
-}
-function handleLogin(event) {
-    return __awaiter(this, void 0, void 0, function () {
-        var email, password, data, login, user, error, error_2;
-        return __generator(this, function (_a) {
-            switch (_a.label) {
-                case 0:
-                    _a.trys.push([0, 2, , 3]);
-                    event.preventDefault();
-                    email = event.target.email.value;
-                    password = event.target.password.value;
-                    if (!email)
-                        throw new Error("Email is required");
-                    if (!password)
-                        throw new Error("Password is required");
-                    return [4 /*yield*/, axios.post('/users/login', { email: email, password: password })];
-                case 1:
-                    data = (_a.sent()).data;
-                    if (!data)
-                        throw new Error("Couldn't receive data from axios POST URL: /users/login ");
-                    login = data.login, user = data.user, error = data.error;
-                    if (error)
-                        throw error;
-                    console.log(login);
-                    if (login) {
-                        window.location.href = "./userProfile.html?userId=" + user._id;
-                        console.log(user);
-                    }
-                    return [3 /*break*/, 3];
-                case 2:
-                    error_2 = _a.sent();
-                    console.log(error_2);
                     return [3 /*break*/, 3];
                 case 3: return [2 /*return*/];
             }

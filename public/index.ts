@@ -31,9 +31,13 @@ async function handleLogin(event) {
         //@ts-ignore
         const { data } = await axios.post('/users/login', { email, password });
         if (!data) throw new Error("Couldn't receive data from axios POST URL: /users/login ");
-        const { login, error } = data;
+        const { login, user, error } = data;
         if(error) throw error;
-        console.log(data);
+        console.log(login);
+        if(login) {
+            window.location.href = `./userProfile.html?userId=${user._id}`
+            console.log(user);
+        }
     } catch (error) {
         console.log(error);
     }
