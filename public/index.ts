@@ -11,11 +11,13 @@ async function handleRegister(event) {
         //@ts-ignore
         const { data } = await axios.post('/users/register', { email, password });
         if (!data) throw new Error("Couldn't receive data from axios POST URL: /users/register ");
-        const { register , error } = data;
+        const { register, user , error } = data;
         console.log(error);
         if(error && error.includes("E11000")) alert("Email is alredy in use");
         if(error && error.includes('"password"')) alert("Password must be at least 6 characters long"); 
-        console.log(data);
+        if (register) {
+            user.isFirstLogin = true;
+        }
     } catch (error) {
         console.error(error);
     }
@@ -35,8 +37,11 @@ async function handleLogin(event) {
         if(error) throw error;
         console.log(login);
         if(login) {
-            window.location.href = `./userProfile.html?userId=${user._id}`
-            console.log(user);
+            if(user.isFirstLogin) {
+                window.location.href = `./editProfile.html?userId=${user._id}`;
+            } else {
+                window.location.href = `./userProfile.html?userId=${user.uid}`;
+            }
         }
     } catch (error) {
         console.log(error);

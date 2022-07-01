@@ -41,7 +41,7 @@ function getUserIdByParams() {
 }
 function handleGetUser() {
     return __awaiter(this, void 0, void 0, function () {
-        var userId, data, error_1;
+        var userId, data, user, error, error_1;
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
@@ -52,7 +52,11 @@ function handleGetUser() {
                     data = (_a.sent()).data;
                     if (!data)
                         throw new Error("Couldn't recieve data from axios GET URL: /user/get-user ");
-                    console.log(data);
+                    user = data.user, error = data.error;
+                    if (error)
+                        throw (error);
+                    console.log(user);
+                    greetUserTitle(user);
                     return [3 /*break*/, 3];
                 case 2:
                     error_1 = _a.sent();
@@ -62,4 +66,13 @@ function handleGetUser() {
             }
         });
     });
+}
+function greetUserTitle(user) {
+    try {
+        var titlePage = document.getElementById('titlePage');
+        titlePage.innerHTML = user.email + " Profile";
+    }
+    catch (error) {
+        console.error(error);
+    }
 }

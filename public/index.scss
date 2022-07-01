@@ -53,8 +53,11 @@ body {
                 padding-left: 2em;
                 
                 background-size: 1.5em 1.5em;
-                background-position: 5px 5px;
+                background-position: 5px 4px;
                 background-repeat: no-repeat;
+            }
+            input[type=password],:focus {
+                background-size: 1.3em 1.3em;
             }
             button{
                 color: var(--dark-brown);
